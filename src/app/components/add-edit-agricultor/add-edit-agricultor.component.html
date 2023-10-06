@@ -1,0 +1,57 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-1">
+  <div class="col-lg-4 offset-lg-4">
+    <div class="card bg-secondary mb-3" style="max-width: 30rem;">
+      <div class="card-header text-center">{{ operacao }} Agricultor</div>
+      <div class="card-body">
+        <form [formGroup]="formAgricultor" (ngSubmit)="addAgricultor()">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-3">Razão Social</label>
+            <input formControlName="razaoSocial" type="text" class="form-control" placeholder="">
+            <small *ngIf="formAgricultor.get('razaoSocial')?.hasError('required') && formAgricultor.get('razaoSocial')?.touched">Campo obrigatório</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-3">Nome Fantasia</label>
+            <input formControlName="nomeFantasia" type="text" class="form-control" placeholder="">
+            <small *ngIf="formAgricultor.get('nomeFantasia')?.hasError('required') && formAgricultor.get('nomeFantasia')?.touched">Campo obrigatório</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-3">CPF/CNPJ</label>
+            <input formControlName="cpfCnpj" type="text" class="form-control" placeholder="">
+            <small *ngIf="formAgricultor.get('cpfCnpj')?.hasError('required') && formAgricultor.get('cpfCnpj')?.touched">Campo obrigatório</small>
+            <small *ngIf="formAgricultor.get('cpfCnpj')?.hasError('cpfCnpjInvalid') && formAgricultor.get('cpfCnpj')?.touched">CPF/CNPJ inválido</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-3">Celular</label>
+            <input formControlName="celular" type="text" class="form-control" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-3">Cidade</label>
+            <input formControlName="cidade" type="text" class="form-control" placeholder="">
+            <small *ngIf="formAgricultor.get('cidade')?.hasError('required') && formAgricultor.get('cidade')?.touched">Campo obrigatório</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-3">Estado</label>
+            <input formControlName="estado" type="text" class="form-control" placeholder="">
+            <small *ngIf="formAgricultor.get('estado')?.hasError('required') && formAgricultor.get('estado')?.touched">Campo obrigatório</small>
+          </div>
+
+          <div class="row mt-2 text-center">
+            <div class="col-lg-6">
+              <button type="button" class="btn btn-outline-secondary" routerLink="/">Voltar</button>
+            </div>
+            <div class="col-lg-6">
+              <button [disabled]="formAgricultor.invalid" type="submit" class="btn btn-outline-primary">Adicionar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
